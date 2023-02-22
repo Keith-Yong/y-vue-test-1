@@ -7,6 +7,17 @@
     <title>Y-Vue-UI</title>
     <style>
         *{margin: 0; padding: 0; box-sizing: border-box;}
+        /* 使用root管理样式的变量 */
+        :root {
+            --button-height: 32px;
+            --font-size: 14px;
+        }
+    </style>
+    <style>
+        .g-button {
+            font-size: var(--button-height);
+            height: var(--font-size);
+        }
     </style>
 </head>
 <body>
