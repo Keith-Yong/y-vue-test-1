@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/Keith-Yong/y-vue-test-1#readme",
   "dependencies": {
-    "vue": "^3.2.47"
+    "vue": "^2.5.16"
   }
 }
