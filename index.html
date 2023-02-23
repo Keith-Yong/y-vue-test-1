@@ -28,14 +28,23 @@
         }
 
     </style>
-  
+  <style>
+    /* 使用em是为了和文字一样高 */
+    .icon{
+       width: 1em; 
+       height:1em;
+
+
+    }
+  </style>
 </head>
 <body>
     <div id="app">
         <!-- 字符串当作标签使用 -->
-       <g-button>我爱JS</g-button>
+       <g-button icon="settings">我爱JS</g-button>
     </div>
     <script src="./src/app.js" type="module"></script>
+    <script src="//at.alicdn.com/t/c/font_3913418_27sy7i1fw5j.js"></script>
     
 </body>
 </html>

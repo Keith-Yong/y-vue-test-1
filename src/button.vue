@@ -1,11 +1,15 @@
 <template>
     <button class ="g-button">
+    <!--:等价于v-bind动态绑定，{icon}是模板变量，``是反引号使模板变量生效  -->
+        <svg class="icon"><use :xlink:href="`#I-${icon}`"></use></svg>
         <slot></slot>
     </button>
 </template>
 
 <script>
-   export default {}
+   export default {
+    props:['icon']
+   }
 
 
 </script>
