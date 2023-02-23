@@ -1,10 +1,7 @@
 <template>
     
     <button  class ="g-button" :class="{[`icon-${iconPosition}`]:true}">
-    <!--:等价于v-bind动态绑定，{icon}是模板变量，``是反引号使模板变量生效  -->
-    <!--  icon变量存在才用svg -->
-        <svg v-if="icon" class="icon"><use :xlink:href="`#I-${icon}`"></use></svg>
-        <!-- slot标签内不能添加样式，所以需要加一个div标签 -->
+        <g-icon v-if="icon" :name="icon"></g-icon>
         <div class="content">
         <slot></slot>
         </div>
