@@ -21,9 +21,20 @@
   },
   "homepage": "https://github.com/Keith-Yong/y-vue-test-1#readme",
   "dependencies": {
-    "vue": "^2.5.16"
+    "vue": "^2.5.16",
+    "vue-hot-reload-api": "^2.3.4"
+  },
+  "resolutions": {
+    "node-sass": "npm:sass@latest"
   },
   "devDependencies": {
-    "parcel-bundler": "^1.12.5"
+    "@vue/component-compiler-utils": "^2",
+    "node-sass": "npm:sass@latest",
+    "parcel": "1.9.7",
+    "sass": "^1.58.3",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "alias": {
+    "vue": "./node_modules/vue/dist/vue.common.js"
   }
 }
