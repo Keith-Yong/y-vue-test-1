@@ -20,6 +20,10 @@
         iconPosition: {
             type:String,
             default:'left',
+            // 验证iconPosition的值
+            validator(value) {
+                return value === 'left' || value == 'right';
+            }
         }
     }
    }
