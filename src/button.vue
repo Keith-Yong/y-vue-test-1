@@ -13,7 +13,15 @@
 
 <script>
    export default {
-    props:['icon','iconPosition']
+    // props:['icon','iconPosition']
+    props: {
+        icon:{},
+        // props属性设置的第二种方法：设置默认值
+        iconPosition: {
+            type:String,
+            default:'left',
+        }
+    }
    }
 
 
