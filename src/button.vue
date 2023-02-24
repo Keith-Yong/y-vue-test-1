@@ -1,8 +1,14 @@
 <template>
-    
-    <button  class ="g-button" :class="{[`icon-${iconPosition}`]:true}">
-        <g-icon class="icon" v-if="icon" :name="icon"></g-icon>
-        <g-icon class="loading" name="loading"></g-icon>
+    <!--点击后触发click函数  -->
+    <!-- 问题:怎么理解这里的emit的作用 -->
+    <button  class ="g-button" :class="{[`icon-${iconPosition}`]:true}" 
+    @click="$emit('click')" >
+    <!-- button组件由一个Button按钮标签和两个g-icon组件构成 -->
+    <!-- name指的是组件的属性名称,:指的是可以动态传递 -->
+    <!-- 通过v-if的变量的布尔值控制该组件是否展示 -->
+        <g-icon class="icon" v-if="icon && !loading" :name="icon"></g-icon>
+        <g-icon class="loading icon" v-if="loading" name="loading"></g-icon>
+        
         <div class="content">
         <slot></slot>
         </div>
@@ -22,6 +28,10 @@
             validator(value) {
                 return value === 'left' || value == 'right';
             }
+        },
+        loading: {
+            type:Boolean,
+            default:false,
         }
     }
    }
@@ -35,6 +45,7 @@
         0%{transform: rotate(0deg);}
         100%{transform: rotate(360deg);}
     }
+    // infinite无限，linear线性运动的样式
     .loading{
         animation: spin 2s infinite linear;
 
@@ -66,7 +77,7 @@
             &:focus {
             outline: none;
         }
-        // 问题：为什么这里有两种.icon .icontent的样式，怎么理解
+        // 当选择器icon-right存在的时候，icon和content选择器使用下面的两种
             > .icon{
                 order: 1;
                 margin-right:  .1em;

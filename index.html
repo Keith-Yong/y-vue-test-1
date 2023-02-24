@@ -38,9 +38,12 @@
 <body>
     <div id="app">
         <!-- 字符串当作标签使用 -->
-       <g-button icon="settings">按钮</g-button>
-       <g-button >按钮</g-button>
-       <g-button icon="settings" icon-position="right">按钮</g-button>
+        <!-- click内的函数会在组件被点击后触发click -->
+        <g-button :loading="loading1" @click="loading1 = !loading1">按钮</g-button>
+
+       <g-button icon="settings" :loading="loading2" @click="loading2= !loading2">按钮</g-button>
+       
+       <g-button icon="settings" icon-position="right" :loading="loading3" @click="loading3= !loading3">按钮</g-button>
        
     </div>
     <script src="./src/app.js" type="module"></script>
