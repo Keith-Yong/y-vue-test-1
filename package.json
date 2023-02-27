@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^2",
+    "chai": "^4.3.7",
     "node-sass": "npm:sass@latest",
     "parcel": "1.9.7",
     "sass": "^1.58.3",
