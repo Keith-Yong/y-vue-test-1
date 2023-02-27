@@ -9,6 +9,7 @@
     mounted(){
         //$el用于获取Vue实例关联的DOM元素
         for (let node of this.$el.children) {
+            //  问题:.toLowerCase()的作用是什么
             let name = node.nodeName.toLowerCase()
             if (name !== 'button') {
                 console.warn(`g-button-group的子元素应该全是g-button,但是你写的是${name}`)
@@ -26,7 +27,8 @@
         >   .g-button {
            
             border-radius:0 ;
-            margin-left: -1px;
+            &:not(:first-child) {
+            margin-left: -1px;}
             //  不是第一个元素的左边框设置为none[如果一旦发现css代码错了,不要管为什么马上删除]
             // &:not(:first-child){
             //     border-left: none;
