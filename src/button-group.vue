@@ -1,6 +1,8 @@
 <template>
     <div class="g-button-group">
-    <slot></slot>
+   
+        <slot></slot>
+    
     </div>
 </template>
 
@@ -9,7 +11,7 @@
     mounted(){
         //$el用于获取Vue实例关联的DOM元素
         for (let node of this.$el.children) {
-            //  问题:.toLowerCase()的作用是什么
+            //  nodeName获取的标签名称永远是大写的，所以要转换成小写，否则控制台会重复warn
             let name = node.nodeName.toLowerCase()
             if (name !== 'button') {
                 console.warn(`g-button-group的子元素应该全是g-button,但是你写的是${name}`)
@@ -46,7 +48,7 @@
             }
             // 让后面的元素被触摸后浮动起来
             &:hover{
-                //问题:这里position: relative;的作用是什么
+                
             position: relative;
             z-index: 1;
         }

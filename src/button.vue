@@ -1,6 +1,6 @@
 <template>
     <!--点击后触发click函数  -->
-    <!-- 问题:怎么理解这里的emit的作用 -->
+    <!--事件触发后把click函数传递给外部组件-->
     <button  class ="g-button" :class="{[`icon-${iconPosition}`]:true}" 
     @click="$emit('click')" >
     <!-- button组件由一个Button按钮标签和两个g-icon组件构成 -->
@@ -83,6 +83,7 @@
             }
             > .content{
                 order:2;
+                height: 14px;
             }
 
             &.icon-right{

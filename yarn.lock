@@ -165,7 +165,7 @@
     "object-assign" "^4.1.1"
     "util" "0.10.3"
 
-"assertion-error@^1.1.0":
+"assertion-error@^1.0.1":
   "integrity" "sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw=="
   "resolved" "https://registry.npmmirror.com/assertion-error/-/assertion-error-1.1.0.tgz"
   "version" "1.1.0"
@@ -1074,18 +1074,22 @@
   "resolved" "https://registry.npmmirror.com/caniuse-lite/-/caniuse-lite-1.0.30001457.tgz"
   "version" "1.0.30001457"
 
-"chai@^4.3.7":
-  "integrity" "sha512-HLnAzZ2iupm25PlN0xFreAlBA5zaBSv3og0DdeGA4Ar6h6rJ3A0rolRUKJhSF2V10GZKDgWF/VmAEsNWjCRB+A=="
-  "resolved" "https://registry.npmmirror.com/chai/-/chai-4.3.7.tgz"
-  "version" "4.3.7"
+"chai-spies@^1.0.0":
+  "integrity" "sha512-elF2ZUczBsFoP07qCfMO/zeggs8pqCf3fZGyK5+2X4AndS8jycZYID91ztD9oQ7d/0tnS963dPkd0frQEThDsg=="
+  "resolved" "https://registry.npmmirror.com/chai-spies/-/chai-spies-1.0.0.tgz"
+  "version" "1.0.0"
+
+"chai@*", "chai@4.1.2":
+  "integrity" "sha512-YTHf80rJ8M5/cJoFKEV1y3PnexbGs0vSHjouRRU8gLM05Nc3Mqq9zor/P4SCqB/sgvKRLvya7wHLC1XQ9pTjgQ=="
+  "resolved" "https://registry.npmmirror.com/chai/-/chai-4.1.2.tgz"
+  "version" "4.1.2"
   dependencies:
-    "assertion-error" "^1.1.0"
-    "check-error" "^1.0.2"
-    "deep-eql" "^4.1.2"
+    "assertion-error" "^1.0.1"
+    "check-error" "^1.0.1"
+    "deep-eql" "^3.0.0"
     "get-func-name" "^2.0.0"
-    "loupe" "^2.3.1"
-    "pathval" "^1.1.1"
-    "type-detect" "^4.0.5"
+    "pathval" "^1.0.0"
+    "type-detect" "^4.0.0"
 
 "chalk@^1.1.3":
   "integrity" "sha512-U3lRVLMSlsCfjqYPbLyVv11M9CPW4I728d6TCKMAOJueEeB9/8o+eSsMnxPJD+Q+K909sdESg7C+tIkoH6on1A=="
@@ -1107,7 +1111,7 @@
     "escape-string-regexp" "^1.0.5"
     "supports-color" "^5.3.0"
 
-"check-error@^1.0.2":
+"check-error@^1.0.1":
   "integrity" "sha512-BrgHpW9NURQgzoNyjfq0Wu6VFO6D7IZEmJNdtgNqpzGG8RuNFHt2jQxWlAs4HMe119chBnv+34syEZtc6IhLtA=="
   "resolved" "https://registry.npmmirror.com/check-error/-/check-error-1.0.2.tgz"
   "version" "1.0.2"
@@ -1639,10 +1643,10 @@
   "resolved" "https://registry.npmmirror.com/decode-uri-component/-/decode-uri-component-0.2.2.tgz"
   "version" "0.2.2"
 
-"deep-eql@^4.1.2":
-  "integrity" "sha512-WaEtAOpRA1MQ0eohqZjpGD8zdI0Ovsm8mmFhaDN8dvDZzyoUMcYDnf5Y6iu7HTXxf8JDS23qWa4a+hKCDyOPzw=="
-  "resolved" "https://registry.npmmirror.com/deep-eql/-/deep-eql-4.1.3.tgz"
-  "version" "4.1.3"
+"deep-eql@^3.0.0":
+  "integrity" "sha512-+QeIQyN5ZuO+3Uk5DYh6/1eKO0m0YmJFGNmFHGACpf1ClL1nmlV/p4gNgbl2pJGxgXb4faqo6UE+M5ACEMyVcw=="
+  "resolved" "https://registry.npmmirror.com/deep-eql/-/deep-eql-3.0.1.tgz"
+  "version" "3.0.1"
   dependencies:
     "type-detect" "^4.0.0"
 
@@ -2953,13 +2957,6 @@
   dependencies:
     "js-tokens" "^3.0.0 || ^4.0.0"
 
-"loupe@^2.3.1":
-  "integrity" "sha512-RaPMZKiMy8/JruncMU5Bt6na1eftNoo++R4Y+N2FrxkDVTrGvcyzFTsaGif4QTeKESheMGegbhw6iUAq+5A8zA=="
-  "resolved" "https://registry.npmmirror.com/loupe/-/loupe-2.3.6.tgz"
-  "version" "2.3.6"
-  dependencies:
-    "get-func-name" "^2.0.0"
-
 "lru-cache@^4.1.2", "lru-cache@^4.1.5":
   "integrity" "sha512-sWZlbEP2OsHNkXrMl5GYk/jKk70MBng6UU4YI/qGDYbgf6YbP4EvmqISbXCoJiRKs+1bSpFHVgQxvJ17F2li5g=="
   "resolved" "https://registry.npmmirror.com/lru-cache/-/lru-cache-4.1.5.tgz"
@@ -3515,7 +3512,7 @@
   "resolved" "https://registry.npmmirror.com/path-parse/-/path-parse-1.0.7.tgz"
   "version" "1.0.7"
 
-"pathval@^1.1.1":
+"pathval@^1.0.0":
   "integrity" "sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ=="
   "resolved" "https://registry.npmmirror.com/pathval/-/pathval-1.1.1.tgz"
   "version" "1.1.1"
@@ -5091,7 +5088,7 @@
   dependencies:
     "prelude-ls" "~1.1.2"
 
-"type-detect@^4.0.0", "type-detect@^4.0.5":
+"type-detect@^4.0.0":
   "integrity" "sha512-0fr/mIH1dlO+x7TlcMy+bIDqKPsw/70tVyeHW787goQjhmqaZe10uwLujubK9q9Lg6Fiho1KUKDYz0Z7k7g5/g=="
   "resolved" "https://registry.npmmirror.com/type-detect/-/type-detect-4.0.8.tgz"
   "version" "4.0.8"
