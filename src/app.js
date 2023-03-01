@@ -108,7 +108,7 @@ const expect = chai.expect
         }
     })
     vm.$mount()
-    // 问题：spy变量的作用$on函数的作用
+    // 使空函数成为mock对象，即点击元素后会触发这个空的函数
     let spy = chai.spy(function(){})
     
     vm.$on('click', spy)
