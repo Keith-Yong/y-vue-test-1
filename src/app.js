@@ -2,6 +2,11 @@ import Vue from "vue"
 import Button  from './button.vue'
 import Icon from './icon.vue'
 import ButtonGroup from './button-group'
+//装了任何包都需要重新npx parcel
+import chai from 'chai'
+import spies from 'chai-spies'
+chai.use(spies)
+
 // 注册一个全局的组件名称
 Vue.component('g-button',Button)
 Vue.component('g-icon',Icon)
@@ -17,8 +22,7 @@ new Vue({
     }
     
 })
-//装了任何包都需要重新npx parcel
-import chai from 'chai'
+
 
 const expect = chai.expect
 // 单元测试

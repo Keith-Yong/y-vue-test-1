@@ -84,6 +84,7 @@
             > .content{
                 order:2;
                 height: 14px;
+                line-height: 1;
             }
 
             &.icon-right{
