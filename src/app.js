@@ -62,7 +62,7 @@ const expect = chai.expect
 }
 
 {
-    // 问题：这段代码测试是什么？div变量的作用是什么
+    
     const div = document.createElement('div')
     document.body.appendChild(div)
     const Constructor = Vue.extend(Button)
@@ -73,6 +73,7 @@ const expect = chai.expect
             
         }
     })
+    // div元素的作用是可以让vm实例绑定到一个html标签上进行测试
     vm.$mount(div)
     let svg = vm.$el.querySelector('svg')
     let {order} = window.getComputedStyle(svg)
