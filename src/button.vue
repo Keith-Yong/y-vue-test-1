@@ -1,6 +1,7 @@
 <template>
     <!--点击后触发click函数  -->
     <!--事件触发后把click函数传递给外部组件-->
+    <!-- 问题：这里值为true的作用 -->
     <button  class ="g-button" :class="{[`icon-${iconPosition}`]:true}" 
     @click="$emit('click')" >
     <!-- button组件由一个Button按钮标签和两个g-icon组件构成 -->
@@ -16,7 +17,9 @@
 </template>
 
 <script>
+    
    export default {
+    name:'YVUe-Button',
     // props:['icon','iconPosition']
     props: {
         icon:{},
@@ -39,7 +42,7 @@
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 //  使用动画@keyframes和animation制作加载中的样式
     @keyframes spin {
         0%{transform: rotate(0deg);}

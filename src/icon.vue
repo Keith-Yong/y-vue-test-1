@@ -8,11 +8,12 @@
 <script>
     import './svg'
     export default {
+    name:'YVUe-Icon',
     props: ['name']
    }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
  /* 使用em是为了和文字一样高 */
  .g-icon{
        width: 1em; 

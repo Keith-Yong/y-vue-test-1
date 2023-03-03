@@ -21,7 +21,7 @@
    }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .g-button-group{
         // 使得元素成为行元素不需要换行
         display: inline-flex;
