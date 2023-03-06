@@ -106,9 +106,16 @@ describe('事件', () => {
                 vm.$on(eventName,callback)
                 // 触发input的change事件
                 let event = new Event(eventName);
+                //defineProperties初始化event.target.value的值
+                // 问题:这里更改断言内容的原因是什么
+                Object.defineProperties(
+                    event, 'target', {
+                        value: {value:'hi'},  enumerable: true
+                    }
+                )
                 let InputElement = vm.$el.querySelector('input')
                 InputElement.dispatchEvent(event)
-                expect(callback).to.have.been.calledWith(event)
+                expect(callback).to.have.been.calledWith('hi')
 
             }
         )

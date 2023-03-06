@@ -43,7 +43,10 @@
         <!-- html语法不允许自闭合 -->
         <div class="box">
            
-            <g-input value="王" @change="inputChange"></g-input>
+           <!-- v-model把值message和input事件输入的event.target.value绑定在了一起,一个值变化,在另一个值随之变化 -->
+            <g-input v-model="message"></g-input>
+            <p>{{message}}</p>
+            <button @click="message+=1">+1</button>
         </div>
         
         <div class="box">

@@ -22,14 +22,10 @@ new Vue({
         loading1:false,
         loading2:true,
         loading3:false,
+        message:'hi', //问题:message为什么注册在这里的data,而不是app.vue组件中的data
     },
     created(){
-        setTimeout(()=>{
-            let event = new Event('change');
-            let inputElement = this.$el.querySelector('input')
-            inputElement.dispatchEvent(event)
-            console.log('hi')
-          },3000)
+       
     },
     methods:{
         inputChange(e) {

@@ -1,11 +1,13 @@
 <template>
     <div class="wrapper">
     <!-- 在属性前加:后面值是变量 -->
+    <!-- 双向绑定,只有在input输入框中触发了事件,第一个参数规定必须是input名称,第二个值会被传递出去 这里是输入狂的值-->
         <input type="text" :value="value" :disabled="disabled" :readonly="readonly"
-        @change="$emit('change',$event)"
-        @input="$emit('input',$event)"
-        @focus="$emit('focus',$event)"
-        @blur="$emit('blur',$event)"
+        @change="$emit('change',$event.target.value)"
+        
+        @input="$emit('input',$event.target.value)"
+        @focus="$emit('focus',$event.target.value)"
+        @blur="$emit('blur',$event.target.value)"
         >
         <template v-if="error">
             <icon name="error" class="icon-error"></icon>
