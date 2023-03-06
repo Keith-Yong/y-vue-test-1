@@ -1,7 +1,7 @@
 <template>
     <!--点击后触发click函数  -->
     <!--事件触发后把click函数传递给外部组件-->
-    <!-- 问题：这里值为true的作用 -->
+    <!-- ：这里用对象键值对的形式获取样式 -->
     <button  class ="g-button" :class="{[`icon-${iconPosition}`]:true}" 
     @click="$emit('click')" >
     <!-- button组件由一个Button按钮标签和两个g-icon组件构成 -->

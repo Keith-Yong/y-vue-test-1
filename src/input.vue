@@ -1,7 +1,12 @@
 <template>
     <div class="wrapper">
     <!-- 在属性前加:后面值是变量 -->
-        <input type="text" :value="value" :disabled="disabled" :readonly="readonly">
+        <input type="text" :value="value" :disabled="disabled" :readonly="readonly"
+        @change="$emit('change',$event)"
+        @input="$emit('input',$event)"
+        @focus="$emit('focus',$event)"
+        @blur="$emit('blur',$event)"
+        >
         <template v-if="error">
             <icon name="error" class="icon-error"></icon>
             <span class="errorMessage">{{error}}</span>
@@ -20,10 +25,12 @@ import Icon from './icon.vue'
                 type:String
             },
             disabled:{
-                type:String
+                type: Boolean,
+                default: false
             },
             readonly: {
-                type:String
+                type: Boolean,
+                default: false
             },
             error:{
                 type:String

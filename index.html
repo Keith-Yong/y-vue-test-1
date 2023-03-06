@@ -42,13 +42,10 @@
     <div id="app">
         <!-- html语法不允许自闭合 -->
         <div class="box">
-            <g-input value="张三"  disabled></g-input>
-            <g-input value="李四"  readonly></g-input>
-            <g-input value="王五"></g-input>
+           
+            <g-input value="王" @change="inputChange"></g-input>
         </div>
-        <div class="box">
-            <g-input value="王" error="姓名不能少于两个字"></g-input>
-        </div>
+        
         <div class="box">
             <!-- 字符串当作标签使用 -->
             <!-- click内的函数会在组件被点击后触发click -->
