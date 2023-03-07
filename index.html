@@ -21,7 +21,7 @@
 
         }
         #app {
-            margin: 20px;
+            /* margin: 20px; */
         }
         body {
             font-size: var(--font-size);
@@ -29,30 +29,35 @@
 
        
     </style>
+       
   <style>
-    .box {
-            margin: 20px;
+     .demo {
+            border: 1px solid #666;
+            min-height: 100px;
         }
+    /* .box {
+            margin: 20px;
+        } */
 
 
     
-  </style>
+  </style> 
 </head>
 <body>
     <div id="app">
         <!-- html语法不允许自闭合 -->
-        <div class="box">
+        <!-- <div class="box"> -->
            
            <!-- v-model把值message和input事件输入的event.target.value绑定在了一起,一个值变化,在另一个值随之变化 -->
-            <g-input v-model="message"></g-input>
+            <!-- <g-input v-model="message"></g-input>
             <p>{{message}}</p>
             <button @click="message+=1">+1</button>
-        </div>
+        </div> -->
         
-        <div class="box">
+        <!-- <div class="box"> -->
             <!-- 字符串当作标签使用 -->
             <!-- click内的函数会在组件被点击后触发click -->
-            <g-button :loading="loading1" @click="loading1 = !loading1">默认按钮</g-button>
+            <!-- <g-button :loading="loading1" @click="loading1 = !loading1">默认按钮</g-button>
         
         <g-button icon="settings" :loading="loading2" @click="loading2= !loading2">默认按钮</g-button>
         
@@ -60,11 +65,21 @@
         <g-button disabled>默认按钮</g-button>
         <g-button-group>
                 <g-button icon="left" >上一页</g-button>
-                <g-button >更多</g-button>
+                <g-button >更多</g-button> -->
                 <!--icon-position="right"设置图标在文字的右侧  -->
-                <g-button icon="right"  icon-position="right">下一页</g-button>
+                <!-- <g-button icon="right"  icon-position="right">下一页</g-button>
         </g-button-group>
-        </div>
+        </div> -->
+        <!-- 问题：一般是用什么内容作为插槽传递过去，都是用其他组件作为插槽内容吗 -->
+        <g-layout style="height: 100vh;">
+            <g-sider class="demo">sider</g-sider>
+            <g-layout>
+                <g-header class="demo">header</g-header>
+                
+                <g-content class="demo">content</g-content>
+                <g-footer class="demo">footer</g-footer>
+            </g-layout>
+        </g-layout>
        
     </div>
     <script src="./src/app.js" type="module"></script>

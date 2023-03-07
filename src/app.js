@@ -6,6 +6,11 @@ import ButtonGroup from './button-group'
 import chai from 'chai'
 import spies from 'chai-spies'
 import Input from './input.vue'
+import Layout from './layout.vue'
+import Header from './header.vue'
+import Sider from './sider.vue'
+import Content from './content.vue'
+import Footer from './footer.vue'
 
 chai.use(spies)
 
@@ -14,6 +19,12 @@ Vue.component('g-button',Button)
 Vue.component('g-icon',Icon)
 Vue.component('g-button-group',ButtonGroup)
 Vue.component('g-input',Input)
+Vue.component('g-layout', Layout)
+Vue.component('g-header', Header)
+Vue.component('g-content', Content)
+Vue.component('g-footer', Footer)
+Vue.component('g-sider', Sider)
+
 new Vue({
             
     el: '#app',
