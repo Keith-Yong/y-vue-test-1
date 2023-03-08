@@ -27,7 +27,25 @@
             font-size: var(--font-size);
         }
 
-       
+        .sider {
+            background: #333;
+            width: 150px;
+        }
+
+        .header {
+            background: #999;
+            height: 100px;
+        }
+
+        .footer {
+            background: #ccc;
+            height: 50px;
+        }
+
+        .sider.slide-enter, .sider.slide-leave-to {
+                margin-left: -150px;
+                }
+                
     </style>
        
   <style>
@@ -72,12 +90,12 @@
         </div> -->
         <!-- 问题：一般是用什么内容作为插槽传递过去，都是用其他组件作为插槽内容吗 -->
         <g-layout style="height: 100vh;">
-            <g-sider class="demo">sider</g-sider>
+            <g-sider >sider</g-sider>
             <g-layout>
-                <g-header class="demo">header</g-header>
+                <g-header >header</g-header>
                 
-                <g-content class="demo">content</g-content>
-                <g-footer class="demo">footer</g-footer>
+                <g-content >content</g-content>
+                <g-footer >footer</g-footer>
             </g-layout>
         </g-layout>
        
