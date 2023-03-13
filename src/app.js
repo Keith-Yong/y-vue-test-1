@@ -11,6 +11,8 @@ import Header from './header.vue'
 import Sider from './sider.vue'
 import Content from './content.vue'
 import Footer from './footer.vue'
+import Toast from "./toast"
+import plugin from './plugin';
 
 chai.use(spies)
 
@@ -24,6 +26,8 @@ Vue.component('g-header', Header)
 Vue.component('g-content', Content)
 Vue.component('g-footer', Footer)
 Vue.component('g-sider', Sider)
+//  use会去执行plugin中的install方法,use会把Vue实例传给plugin.js中。plugin.js中不需要导入Vue
+Vue.use(plugin)
 
 new Vue({
             
@@ -33,15 +37,17 @@ new Vue({
         loading1:false,
         loading2:true,
         loading3:false,
-        message:'hi', //问题:message为什么注册在这里的data,而不是app.vue组件中的data
+        message:'hi', //message为什么注册在这里的data,而不是app.vue组件中的data
     },
     created(){
-       
+        
     },
     methods:{
-        inputChange(e) {
-            console.log(e.target.value)
+        showToast() {
+            // 问题在toast上加一个$作用是什么
+            this.$toast('我是message')
+       }
         }
     }
     
-})
+)

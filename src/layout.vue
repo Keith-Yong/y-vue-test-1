@@ -10,17 +10,18 @@
     name: 'YvueLayout',
     data() {
         return {
-            //问题:这里返回的数据会被哪里接收到引用
+            //return的值是什么时候返回的，初始化的时候吗
             layoutClass: {
-                hasSider:false
-            }
+                hasSider:false,
+            },
+           
         }
     },
     mounted() {
         this.$children.forEach(
             (vm) => {
                 if(vm.$options.name === 'YVueSider') {
-                    //问题：为什么让hasSider的值而不是layoutClass变成true
+                   
                     this.layoutClass.hasSider = true
                 }
             }

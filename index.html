@@ -27,39 +27,9 @@
             font-size: var(--font-size);
         }
 
-        .sider {
-            background: #333;
-            width: 150px;
-        }
-
-        .header {
-            background: #999;
-            height: 100px;
-        }
-
-        .footer {
-            background: #ccc;
-            height: 50px;
-        }
-
-        .sider.slide-enter, .sider.slide-leave-to {
-                margin-left: -150px;
-                }
-                
+      
     </style>
-       
-  <style>
-     .demo {
-            border: 1px solid #666;
-            min-height: 100px;
-        }
-    /* .box {
-            margin: 20px;
-        } */
-
-
-    
-  </style> 
+   
 </head>
 <body>
     <div id="app">
@@ -88,8 +58,8 @@
                 <!-- <g-button icon="right"  icon-position="right">下一页</g-button>
         </g-button-group>
         </div> -->
-        <!-- 问题：一般是用什么内容作为插槽传递过去，都是用其他组件作为插槽内容吗 -->
-        <g-layout style="height: 100vh;">
+        <!-- 一般是用什么内容作为插槽传递过去，都是用其他组件作为插槽内容吗 -->
+        <!-- <g-layout style="height: 100vh;">
             <g-sider >sider</g-sider>
             <g-layout>
                 <g-header >header</g-header>
@@ -97,9 +67,10 @@
                 <g-content >content</g-content>
                 <g-footer >footer</g-footer>
             </g-layout>
-        </g-layout>
+        </g-layout> -->
        
-    </div>
+    <!-- </div> -->
+    <button  @click ="showToast">点我</button>
     <script src="./src/app.js" type="module"></script>
     
     
