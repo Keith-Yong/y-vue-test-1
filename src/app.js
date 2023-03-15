@@ -39,13 +39,27 @@ new Vue({
         loading3:false,
         message:'hi', //message为什么注册在这里的data,而不是app.vue组件中的data
     },
+    //
     created(){
-        
+         // 问题：toast函数调用传参后是拿到plugin.js中install函数的返回值吗？
+        this.$toast('你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好',
+       
+        {
+            enableHtml:false
+            // closeButton : {
+            //     text: '<strong>加粗文字</strong>',
+            //     callback(toast) {
+            //         // toast可以接收一个变量，然后引用变量的方法
+            //         toast.log(),
+            //         console.log('用户说他知道了')
+            //     }
+            // }
+        })
     },
     methods:{
         showToast() {
-            // 问题在toast上加一个$作用是什么
-            this.$toast('我是message')
+           
+            
        }
         }
     }

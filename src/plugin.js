@@ -4,11 +4,15 @@ import Toast from './toast'
 */
 export default {
     install(Vue, options) {
-
-       
-        Vue.prototype.$toast = function(message) {
+        Vue.prototype.$toast = function(message, toastOptions) {
             let Constructor = Vue.extend(Toast)
-            let toast = new Constructor()
+            let toast = new Constructor(
+                {
+                    propsData:toastOptions
+                       
+                   
+                }
+            )
             toast.$slots.default = [message] // 给toast传递了一个默认的插槽的内容
             toast.$mount() 
             
