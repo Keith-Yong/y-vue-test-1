@@ -41,7 +41,7 @@ new Vue({
     //
     methods: {
         showToast() {
-            this.$toast('你需要充值',
+            this.$toast(`你需要充值 ${parseInt(Math.random() * 100)}元`,
 
                 {
                     position: 'middle',
