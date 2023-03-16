@@ -121,7 +121,18 @@
     $font-size: 14px;
     $toast-min-height: 40px;
     $toast-bg:rgba(0,0,0,0.75);
+
+    @keyframes fade-in {
+        0%{opacity: 0; transform: translateY(100%);}
+        100%{opacity: 1;transform: translateY(0%);}
+    }
+
+
+
+
+
     .toast {
+        animation: fade-in 1s;
         border: 1px solid red;
         position: fixed;
         // top:0;
