@@ -1,5 +1,5 @@
 import Vue from "vue"
-import Button  from './button.vue'
+import Button from './button.vue'
 import Icon from './icon.vue'
 import ButtonGroup from './button-group'
 //装了任何包都需要重新npx parcel
@@ -11,16 +11,15 @@ import Header from './header.vue'
 import Sider from './sider.vue'
 import Content from './content.vue'
 import Footer from './footer.vue'
-import Toast from "./toast"
 import plugin from './plugin';
 
 chai.use(spies)
 
 // 注册一个全局的组件名称
-Vue.component('g-button',Button)
-Vue.component('g-icon',Icon)
-Vue.component('g-button-group',ButtonGroup)
-Vue.component('g-input',Input)
+Vue.component('g-button', Button)
+Vue.component('g-icon', Icon)
+Vue.component('g-button-group', ButtonGroup)
+Vue.component('g-input', Input)
 Vue.component('g-layout', Layout)
 Vue.component('g-header', Header)
 Vue.component('g-content', Content)
@@ -30,38 +29,34 @@ Vue.component('g-sider', Sider)
 Vue.use(plugin)
 
 new Vue({
-            
+
     el: '#app',
     // 这里定义的变量可以在indexhtml中导入vue组件后使用
     data: {
-        loading1:false,
-        loading2:true,
-        loading3:false,
-        message:'hi', //message为什么注册在这里的data,而不是app.vue组件中的data
+        loading1: false,
+        loading2: true,
+        loading3: false,
+        message: 'hi', //message为什么注册在这里的data,而不是app.vue组件中的data
     },
     //
-    created(){
-         // 问题：toast函数调用传参后是拿到plugin.js中install函数的返回值吗？
-        this.$toast('你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好',
-       
-        {
-            enableHtml:false
-            // closeButton : {
-            //     text: '<strong>加粗文字</strong>',
-            //     callback(toast) {
-            //         // toast可以接收一个变量，然后引用变量的方法
-            //         toast.log(),
-            //         console.log('用户说他知道了')
-            //     }
-            // }
-        })
-    },
-    methods:{
+    methods: {
         showToast() {
-           
-            
-       }
+            this.$toast('你需要充值',
+
+                {
+                    position: 'middle',
+                    enableHtml: false,
+                    closeButton: {
+                        text: '已充值',
+                        callback(toast) {
+                            // toast可以接收一个变量，然后引用变量的方法
+                            toast.log(),
+                                console.log('用户说他已充值')
+                        }
+                    },
+                    autoClose: false,
+                    autoCloseDelay: 3,
+                })
         }
     }
-    
-)
+})

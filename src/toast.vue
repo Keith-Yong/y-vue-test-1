@@ -1,10 +1,11 @@
 <template>
-    <div class="toast" ref="wrapper">
-    <!-- 问题：enableHtml的值为什么是在app.js中toast函数传递过来的 -->
+    <!-- 动态样式可以直接绑定函数toastClasses吗 -->
+    <div class="toast" ref="wrapper" :class="toastClasses">
+    <!-- enableHtml的值为什么是在app.js中toast函数传递过来的 -->
         <div class="message">
             <slot v-if="!enableHtml"></slot>
         
-    <!-- 问题：为什么在plugin中定义的slot可以在本文件中引用 -->
+    <!-- 为什么在plugin中定义的slot可以在本文件中引用 -->
             <div  v-else v-html="$slots.default[0]"></div>
         </div>
 
@@ -18,7 +19,6 @@
 </template>
 
 <script>
-import { type } from 'os';
 
     // 构造组件的选项
    export default {
@@ -43,7 +43,16 @@ import { type } from 'os';
         },
         enableHtml: {
         type:Boolean,
-        default:false
+        default:true
+    },
+    position: {
+        type: String,
+        default:'top',
+        // vue内置校验函数为什么这个validator不定义在methods里面,这个函数在什么时候被调用
+        validator(value) {
+            return ['left', 'right', 'middle', 'bottom'].indexOf(value) >= 0
+        }
+
     }
 
         
@@ -55,18 +64,27 @@ import { type } from 'os';
         mounted() {
             this.updateStyles()
             this.execAutoClose()
+        },
+        // 计算属性函数:用于传递弹窗的方向
+        computed: {
+                toastClasses() {
+                    return {
+                        [`position-${this.position}`]:true
+                    }
+                   
+                }
+            },
            
             
            
-        },
+        
         methods: {
             updateStyles() {
-            // 问题怎么理解这个Api：解决了把height改成minheight后line高度消失的问题，mounted拿不到高度，需要在下一次才能拿到
+            // 怎么理解这个Api：解决了把height改成minheight后line高度消失的问题，mounted拿不到高度，需要在下一次才能拿到
             this.$nextTick(  () => {
                 // 把line的高度引用wrapper元素的高度
                 this.$refs.line.style.height = 
                  `${this.$refs.wrapper.getBoundingClientRect().height}px`
-                
                 })
 
             },
@@ -105,9 +123,9 @@ import { type } from 'os';
     .toast {
         border: 1px solid red;
         position: fixed;
-        top:0;
+        // top:0;
         left: 50%; //没有使元素真正的居中
-        transform: translateX(-50%); //使元素在中间
+        // transform: translateX(-50%); //使元素在中间
         font-size:  $font-size;
         line-height: 1.8;
         min-height:$toast-min-height;
@@ -119,22 +137,47 @@ import { type } from 'os';
         box-shadow:  0 0 3px  0  rgba(0, 0, 0, 0.50);
         padding:0 16px ; //问题：为什么这里的Padding会对文本有作用，我是message是一个元素吗？那它的外部元素是哪个
 
+
+        .close {
+            // border: 1px solid red;
+            padding-left: 16px;
+            flex-shrink:0 ;  // 让关闭按钮不会竖着排列
+        
+        }
+        .line {
+            height: 100%;
+            border-left: 1px solid #666 ;
+            margin-left: 16px;
+        }
+
+        .message {
+            padding: 8px 0;
+        }
+        
+        &.position-top {
+            top: 0;
+            transform: translateX(-50%)
+
+            
+        }
+
+        &.position-bottom {
+            bottom: 0;
+            transform: translateX(-50%)
+            
+        }
+
+        &.position-middle {
+            top:50%;
+            transform: translate(-50%,-50%)
+            
+        }
+
     }
 
-    .close {
-        // border: 1px solid red;
-        padding-left: 16px;
-        flex-shrink:0 ;  // 让关闭按钮不会竖着排列
-      
-    }
-    .line {
-        height: 100%;
-        border-left: 1px solid #666 ;
-        margin-left: 16px;
-    }
+    
 
-    .message {
-        padding: 8px 0;
-    }
+   
+
 </style>
 
