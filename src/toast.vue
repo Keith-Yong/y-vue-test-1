@@ -99,6 +99,7 @@
             ,
             close() {
                 this.$el.remove()  // 移除元素并销毁
+                this.$emit('close') // 问题这里的作用，$emit函数第一个函数一般都是函数名称吗？
                 this.$destroy()   //销毁
             },
             log() {
