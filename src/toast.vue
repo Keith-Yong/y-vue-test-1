@@ -1,19 +1,21 @@
 <template>
     <!-- 动态样式可以直接绑定函数toastClasses吗 -->
-    <div class="toast" ref="wrapper" :class="toastClasses">
-    <!-- enableHtml的值为什么是在app.js中toast函数传递过来的 -->
-        <div class="message">
-            <slot v-if="!enableHtml"></slot>
-        
-    <!-- 为什么在plugin中定义的slot可以在本文件中引用 -->
-            <div  v-else v-html="$slots.default[0]"></div>
-        </div>
-
-        <div class="line" ref="line"></div>
-        <span class= "close" v-if="closeButton" @click="onClickClose">
+    <div class="wrapper" :class="toastClasses">
+        <div class="toast" ref="toast" >
+        <!-- enableHtml的值为什么是在app.js中toast函数传递过来的 -->
+            <div class="message">
+                <slot v-if="!enableHtml"></slot>
             
-            {{closeButton.text}}
-        </span>
+        <!-- 为什么在plugin中定义的slot可以在本文件中引用 -->
+                <div  v-else v-html="$slots.default[0]"></div>
+            </div>
+
+            <div class="line" ref="line"></div>
+            <span class= "close" v-if="closeButton" @click="onClickClose">
+                
+                {{closeButton.text}}
+            </span>
+        </div>
     </div>
        
 </template>
@@ -84,10 +86,11 @@
             this.$nextTick(  () => {
                 // 把line的高度引用wrapper元素的高度
                 this.$refs.line.style.height = 
-                 `${this.$refs.wrapper.getBoundingClientRect().height}px`
+                 `${this.$refs.toast.getBoundingClientRect().height}px`
                 })
 
             },
+            
             execAutoClose () {
                 if (this.autoClose) {
                 setTimeout(() => {
@@ -99,7 +102,7 @@
             ,
             close() {
                 this.$el.remove()  // 移除元素并销毁
-                this.$emit('close') // 问题这里的作用，$emit函数第一个函数一般都是函数名称吗？
+                this.$emit('close') // 这里的作用，$emit函数第一个函数一般都是函数名称吗？
                 this.$destroy()   //销毁
             },
             log() {
@@ -122,22 +125,75 @@
     $toast-min-height: 40px;
     $toast-bg:rgba(0,0,0,0.75);
 
-    @keyframes fade-in {
+
+    @keyframes slide-up {
+        // 问题：translateY 100%此时元素在Y左边哪里
         0%{opacity: 0; transform: translateY(100%);}
         100%{opacity: 1;transform: translateY(0%);}
+    }
+
+    @keyframes slide-down {
+    0% {opacity: 0; transform: translateY(-100%);}
+    100% {opacity: 1;transform: translateY(0%);}
+  }
+
+    @keyframes fade-in {
+        0%{opacity: 0; }
+        100%{opacity: 1;}
     }
 
 
 
 
 
-    .toast {
-        animation: fade-in 1s;
-        border: 1px solid red;
+    .wrapper {
         position: fixed;
-        // top:0;
         left: 50%; //没有使元素真正的居中
-        // transform: translateX(-50%); //使元素在中间
+        transform: translateX(-50%); //使元素在中间
+        $animation-duration:300ms;
+
+         
+        &.position-top {
+            top: 0;
+            // transform: translateX(-50%)
+            // 弹窗左右下角的为圆角
+            .toast{
+                border-top-left-radius:0;
+                border-top-right-radius: 0;
+                animation: slide-down  $animation-duration;
+            }
+
+            
+        }
+
+        &.position-bottom {
+            bottom: 0;
+            // transform: translateX(-50%)
+            .toast{
+                border-bottom-left-radius:0;
+                border-bottom-right-radius: 0;
+            }
+            animation:slide-up $animation-duration;
+           
+        }
+
+        &.position-middle {
+            top:50%;
+            transform: translateX(-50%) translateY(-50%);
+            .toast {
+                animation: fade-in $animation-duration;
+            }
+            
+        }
+
+    }
+    .toast {
+        animation: slide-up 1s;
+        border: 1px solid red;
+        
+        // top:0;
+        
+        
         font-size:  $font-size;
         line-height: 1.8;
         min-height:$toast-min-height;
@@ -165,26 +221,7 @@
         .message {
             padding: 8px 0;
         }
-        
-        &.position-top {
-            top: 0;
-            transform: translateX(-50%)
-
-            
-        }
-
-        &.position-bottom {
-            bottom: 0;
-            transform: translateX(-50%)
-            
-        }
-
-        &.position-middle {
-            top:50%;
-            transform: translate(-50%,-50%)
-            
-        }
-
+       
     }
 
     

@@ -40,11 +40,20 @@ new Vue({
     },
     //
     methods: {
-        showToast() {
+        showToast1() {
+            this.showToast('top')
+        },
+        showToast2() {
+            this.showToast('middle')
+        },
+        showToast3(){
+            this.showToast('bottom')
+          },
+        showToast(position) {
             this.$toast(`你需要充值 ${parseInt(Math.random() * 100)}元`,
 
                 {
-                    position: 'bottom',
+                    position: position,
                     enableHtml: false,
                     closeButton: {
                         text: '已充值',
