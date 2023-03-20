@@ -47,6 +47,7 @@ new Vue({
             this.showToast('middle')
         },
         showToast3(){
+            // 问题：下的toast依然会先向上再向左移动
             this.showToast('bottom')
           },
         showToast(position) {
@@ -63,8 +64,8 @@ new Vue({
                                 console.log('用户说他已充值')
                         }
                     },
-                    autoClose: false,
-                    autoCloseDelay: 3,
+                    autoClose: 3,
+                    
                 })
         }
     }
