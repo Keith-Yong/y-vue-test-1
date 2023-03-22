@@ -12,6 +12,11 @@ import Sider from './sider.vue'
 import Content from './content.vue'
 import Footer from './footer.vue'
 import plugin from './plugin';
+import Tabs  from './tabs'
+import TabsHead from './tabs-head'
+import TabsBody from './tabs-body'
+import TabsItem from './tabs-item'
+import TabsPane from './tabs-pane'
 
 chai.use(spies)
 
@@ -27,19 +32,27 @@ Vue.component('g-footer', Footer)
 Vue.component('g-sider', Sider)
 //  use会去执行plugin中的install方法,use会把Vue实例传给plugin.js中。plugin.js中不需要导入Vue
 Vue.use(plugin)
+Vue.component('g-tabs', Tabs)
+Vue.component('g-tabs-head', TabsHead)
+Vue.component('g-tabs-body', TabsBody)
+Vue.component('g-tabs-item', TabsItem)
+Vue.component('g-tabs-pane', TabsPane)
+
 
 new Vue({
 
     el: '#app',
     // 这里定义的变量可以在indexhtml中导入vue组件后使用
     data: {
-        loading1: false,
-        loading2: true,
-        loading3: false,
-        message: 'hi', //message为什么注册在这里的data,而不是app.vue组件中的data
+        selectedTab:'sports'
     },
     //
     methods: {
+        yyy(data) {
+            // 这里为什么是data
+            console.log('yyy')
+            console.log(data)
+        },
         showToast1() {
             this.showToast('top')
         },
