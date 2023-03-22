@@ -33,13 +33,13 @@ import  Vue from 'vue'
             eventBus:this.eventBus
         }
     },
-    created(){
+    mounted(){
         // console.log('eventBus')
         // console.log(this.eventBus)
         // console.log(this)
 
         // this.$emit('update:selected', '这是emit的数据') //必须update触发事件，.sysc才有用
-        // this.eventBus.$emit('update:selected', '这是emit的数据') //必须update触发事件，.sysc才有用
+        this.eventBus.$emit('update:selected', this.selected) //必须update触发事件，.sysc才有用
     }
    }
 </script>
