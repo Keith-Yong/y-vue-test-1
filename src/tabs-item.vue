@@ -5,6 +5,7 @@
 </template>
 
 <script>
+//  item组件的作用：提供样式的变量active，计算属性计算样式的值，监听数据selected
    export default {
     name:'YVueTabsItem',
     inject:['eventBus'],//注入后孙组件可以使用爷组件的eventBus变量

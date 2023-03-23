@@ -5,7 +5,8 @@
     </div>
 </template>
 
-<script>
+<script> 
+//body组件的作用：构建页面的结构
    export default {
     name:'YVueTabsHeader'
    }

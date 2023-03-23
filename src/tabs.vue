@@ -5,10 +5,12 @@
 </template>
 
 <script>
+//  tab组件的作用，提供selected双向绑定，提供eventBus全线变量，emit事件的传递
 import  Vue from 'vue'
    export default {
     name:'YVueTabs',
     props: {
+        // selected可以和外部组件进行双向绑定
         selected : {
             type: String,
             required: true

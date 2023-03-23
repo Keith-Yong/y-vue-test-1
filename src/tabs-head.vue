@@ -1,4 +1,5 @@
 <template>
+
     <div class="tabs-head">
         <slot></slot>
         <!--  这里可以接收2个插槽 -->
@@ -10,6 +11,7 @@
 </template>
 
 <script>
+// head组件作用：整体的结构
    export default {
     name:'YVueTabsHead',
     inject:['eventBus'], // 注入后可以使用父组件的属性
@@ -19,7 +21,7 @@
         // '爷爷给爸爸的 eventBus'
         // console.log('爷爷给爸爸的 eventBus')
         // console.log(this.eventBus)
-        this.$emit('update:selected','tabs-head 抛出的数据')
+        
     }
    }
 </script>
