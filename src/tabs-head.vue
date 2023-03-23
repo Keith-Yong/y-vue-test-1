@@ -16,9 +16,17 @@
    export default {
     name:'YVueTabsHead',
     inject:['eventBus'], // 注入后可以使用父组件的属性
-    created() {
+    mounted() {
         this.eventBus.$on('update:selected',(item,vm) => {
-            console.log(item)
+           let {width, height,top,left} = vm.$el.getBoundingClientRect()
+        //    console.log('$el')
+        //    console.log(width,left)
+           
+           this.$refs.line.style.width = `${width}px`
+         // left是tab和边框的距离，所以可以让line的left变成el的left，实现点击后line距离的变化
+           this.$refs.line.style.left  =   `${left}px`
+          
+
         })
 
         
@@ -34,13 +42,14 @@
         height: $tab-height;
         justify-content: flex-start;
        
-        border: 1px solid red;
+        // border: 1px solid red;
         position: relative;
         > .line {
             position: absolute;
             bottom: 0;
-            border-bottom: $blue;
-            width: 100px;
+            border-bottom: 1px solid $blue;
+            // width: 100px;
+            transition: all 350ms;
         }
         > .actions-wrapper {
             margin-left: auto; // 元素右对齐
