@@ -2,6 +2,7 @@
 
     <div class="tabs-head">
         <slot></slot>
+        <div class="line" ref="line"></div>
         <!--  这里可以接收2个插槽 -->
         <div class="actions-wrapper">
             <slot name="actions" ></slot>
@@ -16,11 +17,10 @@
     name:'YVueTabsHead',
     inject:['eventBus'], // 注入后可以使用父组件的属性
     created() {
-        // Vue的@update事件不会冒泡传递给爸爸组件
-        // Vue的事件在哪个对象上调用，只能在那个对象上监听
-        // '爷爷给爸爸的 eventBus'
-        // console.log('爷爷给爸爸的 eventBus')
-        // console.log(this.eventBus)
+        this.eventBus.$on('update:selected',(item,vm) => {
+            console.log(item)
+        })
+
         
     }
    }
@@ -28,13 +28,20 @@
 
 <style scoped lang="scss">
     $tab-height: 40px;
+    $blue: blue;
     .tabs-head {
         display:flex;
         height: $tab-height;
         justify-content: flex-start;
        
         border: 1px solid red;
-        
+        position: relative;
+        > .line {
+            position: absolute;
+            bottom: 0;
+            border-bottom: $blue;
+            width: 100px;
+        }
         > .actions-wrapper {
             margin-left: auto; // 元素右对齐
         }

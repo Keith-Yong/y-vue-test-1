@@ -56,7 +56,7 @@
         // 当用户点击后，触发xx函数，更新selected为this.name
         //这里的name的值是点击后选中标签的name
         xxx() {
-            this.eventBus.$emit('update:selected',this.name)
+            this.eventBus.$emit('update:selected',this.name,this)
         }
     }
 
@@ -64,6 +64,7 @@
 </script>
 
 <style lang="scss" scoped>
+    $blue:blue;
     .tabs-item {
         
         flex-shrink: 0;
@@ -71,11 +72,13 @@
         /* padding为什么会作用到每个元素上 */
         padding: 0 1em; 
         cursor: pointer;
-        border: 1px solid green;
+        // border: 1px solid green;
         height: 100%;
         display: flex;
         &.active{
-            background: red;
+            // background: red;
+            color:blue;
+            font-weight: bold;
         }
 
     }

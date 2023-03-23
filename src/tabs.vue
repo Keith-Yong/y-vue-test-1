@@ -38,13 +38,26 @@ export default {
     mounted() {
         // console.log('eventBus')
         // console.log(this.eventBus)
-        // console.log(this)
+        console.log(this.$children)
+        // 找到当前选中的tabs-item元素
+        this.$children.forEach( (vm) => {
+            if (vm.$options.name === 'YVueTabsHead') {
+                vm.$children.forEach(  (ChildVm) => {
+                    if (item.$options.name === 'YVueTabsItem' && item.name === this.selected) {
+                        // this.$emit('update:selected', '这是emit的数据') //必须update触发事件，.sysc才有用
+                        this.eventBus.$emit('update:selected', this.selected  ,ChildVm) 
+                    }
+                })
+               
 
-        // this.$emit('update:selected', '这是emit的数据') //必须update触发事件，.sysc才有用
-        this.eventBus.$emit('update:selected', this.selected) //必须update触发事件，.sysc才有用
-        this.eventBus.$on('update:selected', (name) => {
-            this.$emit('update:selected', name)
-        })
+
+
+            }
+           
+        }
+            
+        )
+
     }
 }
 </script>
