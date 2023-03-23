@@ -9,7 +9,7 @@
    export default {
     name:'YVueTabsItem',
     inject:['eventBus'],//注入后孙组件可以使用爷组件的eventBus变量
-    // 问题： props和data有什么区别？
+    //  props和data有什么区别？
     // 如果需要前端开发传值则放在props中，data自身维护值， props相当于参数，data相当于局部变量，组件就是一个函数
     data() {
         return {
@@ -68,8 +68,12 @@
         
         flex-shrink: 0;
         /* 上下 0 左右2个字 */
-        /* 问题：padding为什么会作用到每个元素上 */
+        /* padding为什么会作用到每个元素上 */
         padding: 0 1em; 
+        cursor: pointer;
+        border: 1px solid green;
+        height: 100%;
+        display: flex;
         &.active{
             background: red;
         }

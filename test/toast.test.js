@@ -75,7 +75,7 @@ describe('Toast', () => {
             const vm  = new Constructor({
                 propsData: {position: 'bottom'}
             }).$mount()
-            // 问题：这里为什么是用classList去获取元素
+            // 这里为什么是用classList去获取元素
             expect(vm.$el.classList.contains('position-bottom')).to.eq(true)
 
         })

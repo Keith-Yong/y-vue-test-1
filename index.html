@@ -80,7 +80,9 @@
      <!-- 当tab切换的时候应该换成通知父组件去 修改，app的数据中修改 -->
      <!-- selected.sync等价于@update:selected="selectedTab = $event" -->
      <!-- 当tabs中切换时，会触发update函数 -->
-     <!-- 问题：:selected.sync这里怎么实现从切换tab后切换到对应的内容的 -->
+     <!-- :selected.sync这里怎么实现从切换tab后切换到对应的内容的 -->
+        <!-- {{selectedTab}} hTML对应-->
+        
         <g-tabs :selected.sync="selectedTab" @update:selected="yyy">
             <g-tabs-head>
                 <template slot="actions">

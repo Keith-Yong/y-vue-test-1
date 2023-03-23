@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import Toast from './toast'
 /* 
 生成一个toast组件放到body中
@@ -11,7 +12,7 @@ export default {
             if (currentToast) {
                 currentToast.close()
             }
-            // 问题： propsData: toastOptions为什么不可以写成toastOptions传进去
+            // propsData: toastOptions为什么不可以写成toastOptions传进去
            currentToast =  createToast({Vue,message, propsData: toastOptions,
             // 传入回调函数onclose
             onclose: () => {

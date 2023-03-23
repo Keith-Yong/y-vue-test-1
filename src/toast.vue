@@ -125,7 +125,7 @@ $toast-bg: rgba(0, 0, 0, 0.75);
 
 @keyframes slide-up {
 
-    // 问题：translateY 100%此时元素在Y左边哪里
+    // translateY 100%指的元素自动往下移动自身的高度
     0% {
         opacity: 0;
         transform: translateY(100%);
