@@ -1,5 +1,5 @@
 <template>
-    <div class="tabs-item" @click="xxx" :class="classes">
+    <div class="tabs-item" @click="onClick" :class="classes">
     <slot></slot>
     </div>
 </template>
@@ -30,10 +30,13 @@
         }
     
     },
-    // 计算属性自动获取active变量的值
+    // classes是计算属性函数：自动获取active变量的值和disabled的值
     computed: {
         classes () {
+           
             return {
+                // 返回disabled的值，外部不传递disabled的值就是false,传递值就是true
+                disabled:this.disabled,
 
                 active: this.active
             }
@@ -53,9 +56,13 @@
         })
     },
     methods: {
-        // 当用户点击后，触发xx函数，更新selected为this.name
+        
+        onClick() {
+            // 如果点击后true,则停止后面的流程
+            if(this.disabled) {return}
+            
+            // 当用户点击后，触发xx函数，更新selected为this.name
         //这里的name的值是点击后选中标签的name
-        xxx() {
             this.eventBus.$emit('update:selected',this.name,this)
         }
     }
@@ -65,6 +72,7 @@
 
 <style lang="scss" scoped>
     $blue:blue;
+    $disabled-text-color: grey;
     .tabs-item {
         
         flex-shrink: 0;
@@ -79,6 +87,9 @@
             // background: red;
             color:blue;
             font-weight: bold;
+        }
+        &.disabled {
+            color: $disabled-text-color;
         }
 
     }
