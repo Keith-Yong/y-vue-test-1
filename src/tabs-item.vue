@@ -1,5 +1,5 @@
 <template>
-    <div class="tabs-item" @click="onClick" :class="classes">
+    <div class="tabs-item" @click="onClick" :class="classes"  :data-name="name">
     <slot></slot>
     </div>
 </template>
@@ -17,7 +17,7 @@
         }
     },
     props: {
-       
+       // 这里的disabled作用和input不同，input组件中input标签内置disabled属性
         disabled: {
             type: Boolean,
             default:false
@@ -43,17 +43,23 @@
         }
     },
     created() {
+       
+            
         // console.log('爷爷给孙子的组件')
         // console.log(this.eventBus)
+        // 问题：这里加if的原因
+        if (this.eventBus)  {
         this.eventBus.$on('update:selected', (name) => {
+            console.log(this.selected)
             if(name === this.name){
-                console.log(`我${this.name}被选中了`)
+                // console.log(`我${this.name}被选中了`)
                 this.active = true
             }else{
-                console.log(`我${this.name}没被选中`)
+                // console.log(`我${this.name}没被选中`)
                 this.active =false
             }
         })
+      }
     },
     methods: {
         
@@ -64,6 +70,7 @@
             // 当用户点击后，触发xx函数，更新selected为this.name
         //这里的name的值是点击后选中标签的name
             this.eventBus.$emit('update:selected',this.name,this)
+            this.$emit('click', this)
         }
     }
 
@@ -90,6 +97,7 @@
         }
         &.disabled {
             color: $disabled-text-color;
+            cursor: not-allowed;
         }
 
     }

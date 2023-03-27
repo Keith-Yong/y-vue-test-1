@@ -15,14 +15,14 @@ export default {
             type: String,
             required: true
         },
-        direction: {
-            type: String,
-            default: 'Horizontal',
-            validator(value) {
-                return ['horizontal', 'vertical'].indexOf(value) >= 0
-            }
+        // direction: {
+        //     type: String,
+        //     default: 'Horizontal',
+        //     validator(value) {
+        //         return ['horizontal', 'vertical'].indexOf(value) >= 0
+        //     }
 
-        }
+        // }
     },
     data() {
         return {
@@ -36,14 +36,21 @@ export default {
         }
     },
     mounted() {
+        
         // console.log('eventBus')
         // console.log(this.eventBus)
-        console.log(this.$children)
+        // console.log(this.$children)
+        if (this.$children.length === 0) {
+            console && console.warn &&
+            console.warn('tabs的子组件应该是tabs-head和tabs-nav，但你没有写子组件')
+        }
         // 找到当前选中的tabs-item元素
         this.$children.forEach( (vm) => {
             if (vm.$options.name === 'YVueTabsHead') {
                 vm.$children.forEach(  (ChildVm) => {
-                    if (item.$options.name === 'YVueTabsItem' && item.name === this.selected) {
+                    // console.log('this.selected')
+                    // console.log(this.selected)
+                    if (ChildVm.$options.name === 'YVueTabsItem' && ChildVm.name === this.selected) {
                         // this.$emit('update:selected', '这是emit的数据') //必须update触发事件，.sysc才有用
                         this.eventBus.$emit('update:selected', this.selected  ,ChildVm) 
                     }
