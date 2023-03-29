@@ -6,7 +6,28 @@
 
 <script>
    export default {
-    name:"YVueCollapse"
+    name:"YVueCollapse",
+    props: {
+        single: {
+        type: Boolean,
+        default: false
+      }
+    },
+    data () {
+      return {
+        eventBus: new Vue()
+      }
+    },
+    provide () {
+
+        // 问题：single在哪里传进来是true值
+      if (this.single) {
+        return {
+          eventBus: this.eventBus
+        }
+      }
+    },
+
    }
 </script>
 
