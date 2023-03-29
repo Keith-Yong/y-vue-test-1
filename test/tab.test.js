@@ -48,14 +48,14 @@ describe('Tabs',() => {
       </g-tabs>
         `
 
-        // 问题：这是把div标签挂载还是vue实例化
+        // 这是把div标签挂载还是vue实例化
         let vm = new Vue({el:div})
-        // 问题：这里为什么用$nextTick
+        // 这里为什么用$nextTick
         vm.$nextTick(
             () => {
                 let x = vm.$el.querySelector(`.tabs-item[data-name="finance"]`)
                 expect(x.classList.contains('active')).to.be.true
-                // 问题：done的作用到底是什么
+                //done表示异步测试
                 done()
             }
         )

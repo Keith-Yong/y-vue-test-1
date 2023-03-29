@@ -47,7 +47,7 @@
             
         // console.log('爷爷给孙子的组件')
         // console.log(this.eventBus)
-        // 问题：这里加if的原因
+        // 这里加if的原因
         if (this.eventBus)  {
         this.eventBus.$on('update:selected', (name) => {
             console.log(this.selected)
