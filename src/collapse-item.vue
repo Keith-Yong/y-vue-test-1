@@ -3,7 +3,7 @@
         <div class="title" @click="toggle">
           {{title}}
         </div>
-        <div class="content" v-if="open">
+        <div class="content"  ref="content" v-if="open">
             <slot></slot>
         </div>
     </div>
@@ -16,7 +16,11 @@
         title: {
             type:String,
             required:true
-        }
+        },
+        name: {
+        type: String,
+        required: true
+      },
     },
     data() {
         return {
@@ -25,26 +29,29 @@
     },
     inject: ['eventBus'],
     mounted () {
-      this.eventBus && this.eventBus.$on('update:selected', (vm) => {
+      this.eventBus && this.eventBus.$on('update:selected', (names) => {
         // 问题：this和vm分别指是哪个
-        if (vm  !== this) {
-          this.close()
+        if (names.indexOf(this.name) >= 0) {
+          this.open = true
+        }else {
+          this.open = false
         }
       })
     },
 
     methods: {
       toggle () {
+        //问题：切换不生效
         if (this.open) {
-          this.open = false
+            
+            this.eventBus && this.eventBus.$emit('update:removeSelected', this.name)
         } else {
-          this.open = true
-          this.eventBus && this.eventBus.$emit('update:selected', this)
+            console.log(1)
+            this.eventBus && this.eventBus.$emit('update:addSelected', this.name)
         }
       },
-      close () {
-        this.open = false
-      }
+     
+
     },
 }
 </script>

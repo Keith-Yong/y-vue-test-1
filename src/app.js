@@ -49,7 +49,7 @@ new Vue({
     el: '#app',
     // 这里定义的变量可以在indexhtml中导入vue组件后使用
     data: {
-        selectedTab:'sports'
+        selectedTab:['2','1']
     },
     //
     methods: {
