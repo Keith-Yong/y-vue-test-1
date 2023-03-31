@@ -25,7 +25,8 @@
   "homepage": "https://github.com/Keith-Yong/y-vue-test-1#readme",
   "dependencies": {
     "vue": "^2.5.16",
-    "vue-hot-reload-api": "^2.3.4"
+    "vue-hot-reload-api": "^2.3.4",
+    "vue-server-renderer":"^2.5.16"
   },
   "resolutions": {
     "node-sass": "npm:sass@latest"

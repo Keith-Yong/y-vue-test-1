@@ -10962,7 +10962,7 @@
   "resolved" "https://registry.npmjs.org/vue-router/-/vue-router-3.6.5.tgz"
   "version" "3.6.5"
 
-"vue-server-renderer@^2.6.10":
+"vue-server-renderer@^2.5.16", "vue-server-renderer@^2.6.10":
   "integrity" "sha512-NlGFn24tnUrj7Sqb8njhIhWREuCJcM3140aMunLNcx951BHG8j3XOrPP7psSCaFA8z6L4IWEjudztdwTp1CBVw=="
   "resolved" "https://registry.npmjs.org/vue-server-renderer/-/vue-server-renderer-2.7.14.tgz"
   "version" "2.7.14"
