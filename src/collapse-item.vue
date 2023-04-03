@@ -30,7 +30,7 @@
     inject: ['eventBus'],
     mounted () {
       this.eventBus && this.eventBus.$on('update:selected', (names) => {
-        // 问题：this和vm分别指是哪个
+        // this和vm分别指是哪个
         if (names.indexOf(this.name) >= 0) {
           this.open = true
         }else {
@@ -41,12 +41,10 @@
 
     methods: {
       toggle () {
-        //问题：切换不生效
+        // 切换不生效
         if (this.open) {
-            
             this.eventBus && this.eventBus.$emit('update:removeSelected', this.name)
         } else {
-            console.log(1)
             this.eventBus && this.eventBus.$emit('update:addSelected', this.name)
         }
       },

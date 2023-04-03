@@ -1,6 +1,6 @@
 <template>
 
-    <div class="tabs-head">
+    <div class="tabs-head" ref="head">
         <slot></slot>
         <div class="line" ref="line"></div>
         <!--  这里可以接收2个插槽 -->
@@ -21,12 +21,11 @@
            let {width, height,top,left} = vm.$el.getBoundingClientRect()
         //    console.log('$el')
         //    console.log(width,left)
-           
+        // 问题：这个bug是怎么回事，tab线无法跟着滑动
+           let headLeft =  this.$refs.head.getBoundingClientRect().x
            this.$refs.line.style.width = `${width}px`
          // left是tab和边框的距离，所以可以让line的left变成el的left，实现点击后line距离的变化
-           this.$refs.line.style.left  =   `${left}px`
-          
-
+           this.$refs.line.style.left = `${left-headLeft}px`
         })
 
         

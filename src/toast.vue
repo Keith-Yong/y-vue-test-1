@@ -1,6 +1,6 @@
 <template>
     <!-- 动态样式可以直接绑定函数toastClasses吗 -->
-    <div class="wrapper" :class="toastClasses">
+    <div class="wrapper" :class="toastClasses" ref="toastWrapper">
         <div class="toast" ref="toast">
             <!-- enableHtml的值为什么是在app.js中toast函数传递过来的 -->
             <div class="message">
@@ -55,6 +55,13 @@ export default {
                 return ['left', 'right', 'middle', 'bottom'].indexOf(value) >= 0
             }
 
+        },
+    },
+      zIndex: {
+        type: Number,
+        default: 20,
+        validator(value) {
+          return (typeof value) === 'number'
         }
     },
     created() {
@@ -62,6 +69,7 @@ export default {
     },
     // mounted内的函数会在页面初始化就执行
     mounted() {
+        this.$refs.toastWrapper.style.zIndex = this.zIndex
         this.updateStyles()
         this.execAutoClose()
     },
@@ -72,7 +80,7 @@ export default {
                 [`position-${this.position}`]: true
             }
 
-        }
+        },
     },
 
 
@@ -164,6 +172,7 @@ $toast-bg: rgba(0, 0, 0, 0.75);
 
 
 .wrapper {
+    z-index: 20;
     position: fixed;
     left: 50%; //没有使元素真正的居中
     transform: translateX(-50%); //使元素在中间
@@ -186,15 +195,11 @@ $toast-bg: rgba(0, 0, 0, 0.75);
 
     &.position-bottom {
         bottom: 0;
-
-        // transform: translateX(-50%)
         .toast {
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
+            animation:slide-up $animation-duration;
         }
-
-        animation:slide-up $animation-duration;
-
     }
 
     &.position-middle {
@@ -225,7 +230,7 @@ $toast-bg: rgba(0, 0, 0, 0.75);
     background: $toast-bg;
     border-radius: 4px;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.50);
-    padding: 0 16px; //问题：为什么这里的Padding会对文本有作用，我是message是一个元素吗？那它的外部元素是哪个
+    padding: 0 16px; // 为什么这里的Padding会对文本有作用，我是message是一个元素吗？那它的外部元素是哪个
 
 
     .close {

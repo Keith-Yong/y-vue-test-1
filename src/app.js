@@ -49,7 +49,9 @@ new Vue({
     el: '#app',
     // 这里定义的变量可以在indexhtml中导入vue组件后使用
     data: {
-        selectedTab:['2','1']
+        selectedTab:['2','1'],
+        yyy: 'sports',
+
     },
     //
     methods: {
@@ -65,7 +67,7 @@ new Vue({
             this.showToast('middle')
         },
         showToast3(){
-            // 问题：下的toast依然会先向上再向左移动
+            // 下的toast依然会先向上再向左移动
             this.showToast('bottom')
           },
         showToast(position) {

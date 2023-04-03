@@ -26,12 +26,13 @@
   "dependencies": {
     "vue": "^2.5.16",
     "vue-hot-reload-api": "^2.3.4",
-    "vue-server-renderer":"^2.5.16"
+    "vue-server-renderer": "^2.5.16"
   },
   "resolutions": {
     "node-sass": "npm:sass@latest"
   },
   "devDependencies": {
+    "@parcel/transformer-vue": "^2.8.3",
     "@vue/component-compiler-utils": "^2",
     "chai": "4.1.2",
     "chai-spies": "^1.0.0",

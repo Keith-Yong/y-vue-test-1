@@ -25,7 +25,7 @@
     --color: #333;
     --border-color: #999;
     --border-color-hover: #666;
-  }
+  }最新稳定版
   ```
   IE 15 及以上浏览器都支持此样式。
 
